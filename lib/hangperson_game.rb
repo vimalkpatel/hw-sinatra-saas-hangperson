@@ -39,12 +39,32 @@ class HangpersonGame
  end
 
   def word_with_guesses
-    if guesses.length < 1
+
+    if @guesses.length < 1
     return "-"*word.length
+    else
+    #ans= word.gsub(/[^#{@guesses}]/,"-")
+    ans = word.gsub(/[^#{guesses}]/,"-")
+    a="word= #{word}, ans= #{ans}"
+    
     end
-   word.gsub(/[^#{guesses}]/,"-")
+end
+=begin
+def word_with_guesses
+    result = ''
+    @word.split('').each do |char|
+      if @guesses.include? char
+        result << char
+      else
+        result << '-'
+      end
+    end
+    
+    
+    return result
   end
   
+=end
   def check_win_or_lose
     return :lose if wrong_guesses.length >= NUMBER_OF_TRIES
     return :win if word_with_guesses == word
